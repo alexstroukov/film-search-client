@@ -2,7 +2,7 @@ class FilmsReducers {
   loadFilms = (state, action) => {
     return {
       ...state,
-      films: []
+      films: action.result
     }
   }
 }

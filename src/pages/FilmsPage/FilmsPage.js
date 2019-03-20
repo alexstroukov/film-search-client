@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import styles from './styles'
+import FilmsGrid from './FilmsGrid'
 
-export default () => {
-  return (
-    <div>films page</div>
-  )
+class FilmsPage extends PureComponent {
+  componentDidMount () {
+    const { loadFilms, loadGenres } = this.props
+    loadFilms()
+    loadGenres()
+  }
+  render () {
+    return (
+      <FilmsGrid />
+    )
+  }
 }
+
+export default FilmsPage
