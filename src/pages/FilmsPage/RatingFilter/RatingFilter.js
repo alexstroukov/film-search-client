@@ -21,6 +21,9 @@ class RatingFilter extends PureComponent {
       <div>
         rating filter {this.state.rating}
         <Slider
+          style={{
+            padding: '22px 0px',
+          }}
           value={this.state.rating}
           min={0}
           max={10}

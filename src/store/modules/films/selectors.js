@@ -19,6 +19,11 @@ class FilmsSelectors {
       .reject(film => film.disabled)
       .value()
   })
+  hasFilms = createSelector([
+    this.getFilms
+  ], films => {
+    return films.length > 0
+  })
   getValidGenres = createSelector([
     this.getAllFilms
   ], films => {

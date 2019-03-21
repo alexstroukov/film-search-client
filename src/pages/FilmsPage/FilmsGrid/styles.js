@@ -1,3 +1,5 @@
-export default () => {
-  return {}
+export default (theme) => {
+  return {
+    container: {}
+  }
 }
