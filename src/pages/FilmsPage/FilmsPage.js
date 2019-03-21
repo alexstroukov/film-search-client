@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { withStyles } from '@material-ui/core/styles'
 import styles from './styles'
 import FilmsGrid from './FilmsGrid'
 import GenresFilter from './GenresFilter'
@@ -26,4 +27,4 @@ class FilmsPage extends PureComponent {
   }
 }
 
-export default FilmsPage
+export default withStyles(styles)(FilmsPage)

@@ -1,5 +1,11 @@
 export default (theme) => {
   return {
-    container: {}
+    container: {
+      flexGrow: 1
+    },
+    grid: {},
+    gridItem: {
+      display: 'flex'
+    }
   }
 }

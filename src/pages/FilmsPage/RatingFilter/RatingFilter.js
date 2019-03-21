@@ -1,5 +1,6 @@
 
 import React, { PureComponent } from 'react'
+import { withStyles } from '@material-ui/core/styles'
 import Slider from '@material-ui/lab/Slider'
 import _ from 'lodash'
 import styles from './styles'
@@ -35,4 +36,4 @@ class RatingFilter extends PureComponent {
   }
 }
 
-export default RatingFilter
+export default withStyles(styles)(RatingFilter)

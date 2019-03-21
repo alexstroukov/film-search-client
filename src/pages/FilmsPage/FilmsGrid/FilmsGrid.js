@@ -8,11 +8,17 @@ import styles from './styles'
 
 class FilmsGrid extends PureComponent {
   renderTiles = () => {
-    const { films } = this.props
+    const { classes, films } = this.props
     return _.chain(films)
       .map((film) => {
         return (
-          <Grid item xs={12} sm={6} md={3} >
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={3}
+            className={classes.gridItem}
+          >
             <FilmTile key={film.id} film={film} />
           </Grid>
         )
@@ -22,9 +28,17 @@ class FilmsGrid extends PureComponent {
   render () {
     const { classes } = this.props
     return (
-      <Grid container className={classes.container} spacing={16}>
-        {this.renderTiles()}
-      </Grid>
+      <div
+        className={classes.container}
+      >
+        <Grid
+          className={classes.grid}
+          container
+          spacing={16}
+        >
+          {this.renderTiles()}
+        </Grid>
+      </div>
     )
   }
 }

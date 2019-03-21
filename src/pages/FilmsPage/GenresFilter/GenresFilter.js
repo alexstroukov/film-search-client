@@ -1,6 +1,7 @@
 
 import React, { PureComponent } from 'react'
 import _ from 'lodash'
+import { withStyles } from '@material-ui/core/styles'
 import styles from './styles'
 import GenreOption from './GenreOption'
 
@@ -27,4 +28,4 @@ class GenresFilter extends PureComponent {
   }
 }
 
-export default GenresFilter
+export default withStyles(styles)(GenresFilter)
