@@ -10,6 +10,18 @@ class FilmsActions {
       }
     }
   }
+  applyGenresFilter = (genreIds) => {
+    return {
+      type: actionTypes.APPLY_GENRES_FILTER,
+      genreIds
+    }
+  }
+  applyRatingFilter = (rating) => {
+    return {
+      type: actionTypes.APPLY_RATING_FILTER,
+      rating
+    }
+  }
 }
 
 export default new FilmsActions()

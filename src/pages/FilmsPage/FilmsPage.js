@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react'
 import styles from './styles'
 import FilmsGrid from './FilmsGrid'
+import GenresFilter from './GenresFilter'
+import RatingFilter from './RatingFilter'
 
 class FilmsPage extends PureComponent {
   componentDidMount () {
@@ -10,7 +12,11 @@ class FilmsPage extends PureComponent {
   }
   render () {
     return (
-      <FilmsGrid />
+      <div>
+        <GenresFilter />
+        <RatingFilter />
+        <FilmsGrid />
+      </div>
     )
   }
 }
