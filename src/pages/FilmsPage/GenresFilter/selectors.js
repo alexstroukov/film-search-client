@@ -4,6 +4,17 @@ import { selectors as genresSelectors } from '../../../store/modules/genres'
 import { selectors as filmsSelectors } from '../../../store/modules/films'
 
 class GenresFilterSelectors {
+  // get only genres which have a at least one film
+  getGenres = createSelector([
+    genresSelectors.getGenres,
+    filmsSelectors.getValidGenres
+  ], (genres, validGenres) => {
+    return genres
+      ? _.chain(genres)
+        .filter(genre => validGenres[genre.id])
+        .value()
+      : genres
+  })
   getFilmsGenreIdsDictionary = createSelector([
     filmsSelectors.getFilms
   ], films => {
@@ -13,13 +24,17 @@ class GenresFilterSelectors {
       .reduce((memo, next) => ({ ...memo, [next]: true }), {})
       .value()
   })
-  getGenres = createSelector([
-    genresSelectors.getGenres,
+  // disable genres which dont match a film in the filtered list
+  getGenreOptions = createSelector([
+    this.getGenres,
     this.getFilmsGenreIdsDictionary
   ], (genres, filmsGenreIdsDictionary) => {
     return genres
       ? _.chain(genres)
-        .filter(genre => filmsGenreIdsDictionary[genre.id])
+        .map(genre => ({
+          ...genre,
+          disabled: !filmsGenreIdsDictionary[genre.id]
+        }))
         .value()
       : genres
   })

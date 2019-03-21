@@ -10,10 +10,16 @@ class FilmsActions {
       }
     }
   }
-  applyGenresFilter = (genreIds) => {
+  applyGenreFilter = (genreId) => {
     return {
-      type: actionTypes.APPLY_GENRES_FILTER,
-      genreIds
+      type: actionTypes.APPLY_GENRE_FILTER,
+      genreId
+    }
+  }
+  clearGenreFilter = (genreId) => {
+    return {
+      type: actionTypes.CLEAR_GENRE_FILTER,
+      genreId
     }
   }
   applyRatingFilter = (rating) => {

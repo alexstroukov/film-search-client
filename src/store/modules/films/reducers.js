@@ -4,38 +4,59 @@ import { createLoaderReducer } from '../../loader'
 class FilmsReducers {
   loadFilms = createLoaderReducer(
     (state, action) => {
+      debugger
       return {
         ...state,
-        films: action.result
+        films: this._processFilms({ films: action.result, genreIds: state.genreIds, rating: state.rating })
       }
     }
   )
-  applyGenresFilter = (state, action) => {
+  applyGenreFilter = (state, action) => {
+    const nextGenreIds = [
+      ...state.genreIds,
+      action.genreId
+    ]
     return {
       ...state,
-      films: this._applyFilters({ films: state.films, genreIds: action.genreIds, rating: state.rating }),
-      genreIds: action.genreIds
+      films: this._processFilms({ films: state.films, genreIds: nextGenreIds, rating: state.rating }),
+      genreIds: nextGenreIds
+    }
+  }
+  clearGenreFilter = (state, action) => {
+    const nextGenreIds = _.chain(state.genreIds)
+      .reject(genreId => genreId === action.genreId)
+      .value()
+    return {
+      ...state,
+      films: this._processFilms({ films: state.films, genreIds: nextGenreIds, rating: state.rating }),
+      genreIds: nextGenreIds
     }
   }
   applyRatingFilter = (state, action) => {
     return {
       ...state,
-      films: this._applyFilters({ films: state.films, genreIds: state.genreIds, rating: action.rating }),
+      films: this._processFilms({ films: state.films, genreIds: state.genreIds, rating: action.rating }),
       rating: action.rating
     }
   }
-  _applyFilters = ({ films, genreIds, rating }) => {
-    return _.chain(films)
-      .filter(film => {
-        const filmHasTheRequiredRating = rating
-          ? film.vote_average >= rating
+  _processFilms = ({ films, genreIds, rating }) => {
+    const processedFilms = _.chain(films)
+      .map(film => {
+        const ratingIsTooLow = rating
+          ? rating < film.vote_average
           : true
-        const filmHasTheRequiredGenres = rating
-          ? _.difference(genreIds, film.genre_ids).length === 0 
-          : true
-        return filmHasTheRequiredRating && filmHasTheRequiredGenres
+        const doesntMatchFilteredGenres = genreIds && genreIds.length > 0
+          ? _.difference(genreIds, film.genre_ids).length > 0
+          : false
+        return {
+          ...film,
+          disabled: ratingIsTooLow || doesntMatchFilteredGenres
+        }
       })
+      .orderBy('popularity', 'desc')
       .value()
+    debugger
+    return processedFilms
   }
 }
 
