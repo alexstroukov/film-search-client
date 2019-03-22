@@ -21,11 +21,15 @@ The code is split out into the following core sections:
 $ npm i
 $ npm start
 ```
+## TODO
+
+- `UX` - To improve UI compatability I would take a mobile first approach to setting up the app layout. On mobile I would extract the filters into a modal which can be toggled by a single fixed button in the app header. And on desktop I would expose filters by default. To achieve this I would use material ui's [Hidden](https://material-ui.com/layout/hidden/) component and [theme breakpoints](https://material-ui.com/layout/breakpoints/).
+
+- `testing` - In a front end project I would typically the the most valuable/least volatile areas of code. This would include store reducers, middleware, and selectors. But would usually exclude component testing.
 
 ## Testing
 
 ```
-// todo
 $ npm run test
 ```
 ## Building a release
