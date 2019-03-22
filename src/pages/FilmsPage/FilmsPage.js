@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import { Hidden } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
+import Fab from '@material-ui/core/Fab'
+import Icon from '@material-ui/core/Icon'
 import Dialog from '@material-ui/core/Dialog'
 import Slide from '@material-ui/core/Slide'
 import styles from './styles'
@@ -26,7 +28,7 @@ class FilmsPage extends PureComponent {
     this.setState({ filtersOpen: false })
   }
   render () {
-    const { isLoading, noResults } = this.props
+    const { classes, isLoading, noResults } = this.props
     if (isLoading) {
       return <LoadingPanel />
     } else {
@@ -36,13 +38,14 @@ class FilmsPage extends PureComponent {
             <Filter />
           </Hidden>
           <Hidden mdUp>
-            <Button
-              variant='outlined'
-              color='primary'
+            <Fab
+              color="secondary"
+              aria-label="Edit"
+              className={classes.filterButton}
               onClick={this.handleClickOpen}
             >
-              Filter
-            </Button>
+              <Icon>edit_icon</Icon>
+            </Fab>
             <Dialog
               fullScreen
               open={this.state.filtersOpen}
