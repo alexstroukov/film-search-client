@@ -9,6 +9,18 @@ class FilmsSelectors {
   getGenreIds = (state) => {
     return state.films.genreIds
   }
+  getGenreIdsDictionary = createSelector([
+    this.getGenreIds
+  ], genreIds => {
+    return _.chain(genreIds)
+      .reduce((memo, next) => ({ ...memo, [next]: true }), {})
+      .value()
+  })
+  getGenreIdIsSelected = _.memoize((genreId) => createSelector([
+    this.getGenreIdsDictionary
+  ], genreIdsDictionary => {
+    return genreIdsDictionary[genreId]
+  }))
   getAllFilms = (state) => {
     return state.films.films
   }

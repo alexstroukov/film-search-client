@@ -2,6 +2,7 @@
 import React, { PureComponent } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import Slider from '@material-ui/lab/Slider'
+import Typography from '@material-ui/core/Typography'
 import _ from 'lodash'
 import styles from './styles'
 
@@ -16,11 +17,18 @@ class RatingFilter extends PureComponent {
     })
   }
   render () {
-    const { applyRatingFilter } = this.props
-    // classes={{ container: classes.slider }}
+    const { classes } = this.props
     return (
-      <div>
-        rating filter {this.state.rating}
+      <div
+        className={classes.container}
+      >
+        <Typography
+          component='h4'
+          variant='h4'
+          gutterBottom
+        >
+          Filter By Rating ({this.state.rating})
+        </Typography>
         <Slider
           style={{
             padding: '22px 0px',

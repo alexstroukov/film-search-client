@@ -3,24 +3,23 @@ import React, { PureComponent } from 'react'
 import _ from 'lodash'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
-import FilmTile from '../FilmTile'
+import Typography from '@material-ui/core/Typography'
 import styles from './styles'
+import GenreOption from './GenreOption'
 
-class FilmsGrid extends PureComponent {
+class GenresFilter extends PureComponent {
   renderTiles = () => {
-    const { classes, films } = this.props
-    return _.chain(films)
-      .map((film) => {
+    const { genres } = this.props
+    return _.chain(genres)
+      .map(genre => {
         return (
           <Grid
-            key={film.id}
+            key={genre.id}
             item
-            xs={12}
-            sm={6}
-            md={3}
-            className={classes.gridItem}
+            xs={4}
+            sm={4}
           >
-            <FilmTile film={film} />
+            <GenreOption genre={genre} />
           </Grid>
         )
       })
@@ -32,8 +31,14 @@ class FilmsGrid extends PureComponent {
       <div
         className={classes.container}
       >
+        <Typography
+          component='h4'
+          variant='h4'
+          gutterBottom
+        >
+          Filter By Genre
+        </Typography>
         <Grid
-          className={classes.grid}
           container
           spacing={16}
         >
@@ -44,4 +49,4 @@ class FilmsGrid extends PureComponent {
   }
 }
 
-export default withStyles(styles)(FilmsGrid)
+export default withStyles(styles)(GenresFilter)

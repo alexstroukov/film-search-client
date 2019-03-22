@@ -8,7 +8,7 @@ import styles from './styles'
 
 class GenreOption extends PureComponent {
   state = {
-    selected: false
+    selected: this.props.selected
   }
   handleSelected = () => {
     const { genre, applyGenreFilter, clearGenreFilter } = this.props

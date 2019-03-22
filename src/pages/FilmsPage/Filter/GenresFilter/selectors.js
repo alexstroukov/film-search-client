@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { createSelector } from 'reselect'
-import { selectors as genresSelectors } from '../../../store/modules/genres'
-import { selectors as filmsSelectors } from '../../../store/modules/films'
+import { selectors as genresSelectors } from '../../../../store/modules/genres'
+import { selectors as filmsSelectors } from '../../../../store/modules/films'
 
 class GenresFilterSelectors {
   // get only genres which have a at least one film
