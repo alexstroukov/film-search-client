@@ -10,10 +10,13 @@ class RatingFilter extends PureComponent {
   state = {
     rating: this.props.rating
   }
-  handleChange = (e, rating) => {
+  applyRatingFilter = _.debounce((rating) => {
     const { applyRatingFilter } = this.props
+    applyRatingFilter(rating)
+  }, 300, { leading: false, trailing: true })
+  handleChange = (e, rating) => {
     this.setState({ rating }, () => {
-      applyRatingFilter(this.state.rating)
+      this.applyRatingFilter(this.state.rating)
     })
   }
   render () {
