@@ -4,7 +4,7 @@ import reducers from './reducers'
 export const defaultState = {
   films: undefined,
   genreIds: [],
-  rating: 17
+  rating: 3
 }
 export default (state = defaultState, action) => {
   switch (action.type) {
