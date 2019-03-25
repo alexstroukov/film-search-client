@@ -28,7 +28,6 @@ class GenreOption extends PureComponent {
           <Checkbox
             disabled={genre.disabled && !this.state.selected}
             checked={this.state.selected}
-            value={this.state.selected}
             onChange={this.handleSelected}
           />
         }

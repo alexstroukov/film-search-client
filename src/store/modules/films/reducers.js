@@ -4,7 +4,6 @@ import { createLoaderReducer } from '../../loader'
 class FilmsReducers {
   loadFilms = createLoaderReducer(
     (state, action) => {
-      debugger
       return {
         ...state,
         films: this._processFilms({ films: action.result, genreIds: state.genreIds, rating: state.rating })
@@ -55,7 +54,6 @@ class FilmsReducers {
       })
       .orderBy('popularity', 'desc')
       .value()
-    debugger
     return processedFilms
   }
 }
