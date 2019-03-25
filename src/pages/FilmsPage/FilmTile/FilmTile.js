@@ -7,7 +7,7 @@ import styles from './styles'
 
 class FilmTile extends PureComponent {
   render () {
-    const { classes, film } = this.props
+    const { film } = this.props
     const imageUrl = `${config.imageBaseUrl}${config.imageBaseSize}/${film.poster_path}`
     const genreNames = film.genres.join(', ')
     return (

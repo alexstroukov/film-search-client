@@ -1,6 +1,5 @@
 
 import React, { PureComponent } from 'react'
-import _ from 'lodash'
 import { withStyles } from '@material-ui/core/styles'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
