@@ -42,7 +42,7 @@ class FilmsReducers {
     const processedFilms = _.chain(films)
       .map(film => {
         const ratingIsTooLow = rating
-          ? rating < film.vote_average
+          ? film.vote_average < rating
           : true
         const doesntMatchFilteredGenres = genreIds && genreIds.length > 0
           ? _.difference(genreIds, film.genre_ids).length > 0
