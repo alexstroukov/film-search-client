@@ -37,6 +37,8 @@ const createLoaderReducer = (
         action: undefined,
         error: action.error.message
       }
+    default:
+      return state
   }
 }
 
