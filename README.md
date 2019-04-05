@@ -2,7 +2,7 @@ Hello! This project is a solution to the [movie listing challenge](https://zone.
 
 It is bootstrapped with `create-react-app` and built with `react`, `redux`, `react-router`, `reselect`, `recompose`, and `material-ui` as its core libraries.
 
-Async data loading is handled with a custom [middleware](src/store/loader/index.js)
+Async data loading is handled with a custom [middleware](https://github.com/alexstroukov/slex-redux-loader) i published
 
 The code is split out into the following core sections:
 

@@ -1,4 +1,4 @@
-import { createLoaderReducer } from '../../loader'
+import { createLoaderReducer } from 'slex-redux-loader'
 
 class GenresReducers {
   loadGenres = createLoaderReducer(

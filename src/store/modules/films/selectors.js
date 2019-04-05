@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import { createSelector } from 'reselect'
-import { loaderSelectors } from '../../loader'
+import { loaderSelectors } from 'slex-redux-loader'
 
 class FilmsSelectors {
   getRating = (state) => {

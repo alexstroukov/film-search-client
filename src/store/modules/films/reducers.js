@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { createLoaderReducer } from '../../loader'
+import { createLoaderReducer } from 'slex-redux-loader'
 
 class FilmsReducers {
   loadFilms = createLoaderReducer(

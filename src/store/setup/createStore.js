@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import { loaderMiddleware } from '../loader'
+import { loaderMiddleware } from 'slex-redux-loader'
 import { store as films } from '../modules/films'
 import { store as genres } from '../modules/genres'
 
